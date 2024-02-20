@@ -29,18 +29,19 @@ csrf-token: <your CSRF token>
   "operationName": "planTrip",
   "variables": {
     "origin": {
-      "latitude": <your-lat>,
-      "longitude": <your-lng>
+      "latitude": 40.7685063,
+      "longitude": -73.977357
     },
     "destination": {
-      "latitude": <dest-lat>,
-      "longitude": <dest-lng>
+      "latitude": 38.889573,
+      "longitude": -77.0091605
     },
     "bearing": 0,
     "vehicleId": <your-vehicle-id>,
     "startingSoc": 57.20000076293945,
     "startingRangeMeters": 298000,
     "targetArrivalSocPercent": 20,
+    "driveMode": "winter",
     "networkPreferences": [
       {
         "networkId": "10001",
@@ -64,7 +65,7 @@ csrf-token: <your CSRF token>
       }
     ]
   },
-  "query": "query planTrip($origin: CoordinatesInput!, $destination: CoordinatesInput!, $bearing: Float!, $vehicleId: String!, $startingSoc: Float!, $startingRangeMeters: Float!, $targetArrivalSocPercent: Float, $networkPreferences: [NetworkPreference!]) { planTrip(bearing: $bearing, vehicleId: $vehicleId, startingSoc: $startingSoc, origin: $origin, destination: $destination, startingRangeMeters: $startingRangeMeters, targetArrivalSocPercent: $targetArrivalSocPercent, networkPreferences: $networkPreferences) { routes { routeResponse destinationReached totalChargingDuration arrivalSOC arrivalReachableDistance waypoints { waypointType entityId name latitude longitude maxPower chargeDuration arrivalSOC arrivalReachableDistance departureSOC departureReachableDistance } energyConsumptionOnLeg batteryEmptyToDestinationDistance batteryEmptyLocationLatitude batteryEmptyLocationLongitude } tripPlanStatus chargeStationsAvailable socBelowLimit } }"
+  "query": "query planTrip($origin: CoordinatesInput!, $destination: CoordinatesInput!, $bearing: Float!, $vehicleId: String!, $startingSoc: Float!, $startingRangeMeters: Float!, $targetArrivalSocPercent: Float, $driveMode: String, $networkPreferences: [NetworkPreference!]) { planTrip(bearing: $bearing, vehicleId: $vehicleId, startingSoc: $startingSoc, origin: $origin, destination: $destination, startingRangeMeters: $startingRangeMeters, targetArrivalSocPercent: $targetArrivalSocPercent, driveMode: $driveMode, networkPreferences: $networkPreferences) { routes { routeResponse destinationReached totalChargingDuration arrivalSOC arrivalReachableDistance waypoints { waypointType entityId name latitude longitude maxPower chargeDuration arrivalSOC arrivalReachableDistance departureSOC departureReachableDistance } energyConsumptionOnLeg batteryEmptyToDestinationDistance batteryEmptyLocationLatitude batteryEmptyLocationLongitude } tripPlanStatus chargeStationsAvailable socBelowLimit } }"
 }
 ```
 
@@ -78,24 +79,36 @@ csrf-token: <your CSRF token>
         {
           "routeResponse": <large-object-with-route-data>,
           "destinationReached": true,
-          "totalChargingDuration": 702,
-          "arrivalSOC": 25,
-          "arrivalReachableDistance": 131912.6711788204,
+          "totalChargingDuration": 2232,
+          "arrivalSOC": 20,
+          "arrivalReachableDistance": 104000,
           "waypoints": [
             {
               "waypointType": "DC_CHARGE_STATION",
-              "entityId": <station_id>,
-              "name": <station_name>,
-              "latitude": <station_lat>,
-              "longitude": <station_lng>,
-              "maxPower": 150,
-              "chargeDuration": 313,
-              "arrivalSOC": 49,
-              "arrivalReachableDistance": 254632.05919842955,
-              "departureSOC": 56,
-              "departureReachableDistance": 291421.6339635606
+              "entityId": "riv_chrg_2564224766546878632",
+              "name": "3995 Aramingo Ave, Philadelphia [EVgo]",
+              "latitude": 39.99734115600586,
+              "longitude": -75.08834838867188,
+              "maxPower": 350,
+              "chargeDuration": 2232,
+              "arrivalSOC": 17,
+              "arrivalReachableDistance": 89000,
+              "departureSOC": 76,
+              "departureReachableDistance": 397000
             },
-            ...
+            {
+              "waypointType": "OTHER",
+              "entityId": null,
+              "name": null,
+              "latitude": 38.889573,
+              "longitude": -77.0091605,
+              "maxPower": null,
+              "chargeDuration": 0,
+              "arrivalSOC": 20,
+              "arrivalReachableDistance": 104000,
+              "departureSOC": 20,
+              "departureReachableDistance": 104000
+            }
           ],
           "energyConsumptionOnLeg": null,
           "batteryEmptyToDestinationDistance": null,
