@@ -30,7 +30,7 @@ csrf-token: <your CSRF token>
   "variables": {
     "vehicleID": <your-vehicle-id>
   },
-  "query": "query GetVehicleState($vehicleID: String!) { vehicleState(id: $vehicleID) { __typename ...vehicleStateFields } }  fragment vehicleStateFields on VehicleState { gnssLocation { latitude longitude timeStamp isAuthorized } gnssSpeed { timeStamp value } gnssAltitude { timeStamp value } gnssError { timeStamp positionVertical positionHorizontal speed bearing } alarmSoundStatus { timeStamp value } timeToEndOfCharge { timeStamp value } doorFrontLeftLocked { timeStamp value } doorFrontLeftClosed { timeStamp value } doorFrontRightLocked { timeStamp value } doorFrontRightClosed { timeStamp value } doorRearLeftLocked { timeStamp value } doorRearLeftClosed { timeStamp value } doorRearRightLocked { timeStamp value } doorRearRightClosed { timeStamp value } windowFrontLeftClosed { timeStamp value } windowFrontRightClosed { timeStamp value } windowFrontLeftCalibrated { timeStamp value } windowFrontRightCalibrated { timeStamp value } windowRearLeftCalibrated { timeStamp value } windowRearRightCalibrated { timeStamp value } windowsNextAction { timeStamp value } closureFrunkLocked { timeStamp value } closureFrunkClosed { timeStamp value } closureFrunkNextAction { timeStamp value } gearGuardLocked { timeStamp value } closureLiftgateLocked { timeStamp value } closureLiftgateClosed { timeStamp value } closureLiftgateNextAction { timeStamp value } windowRearLeftClosed { timeStamp value } windowRearRightClosed { timeStamp value } closureSideBinLeftLocked { timeStamp value } closureSideBinLeftClosed { timeStamp value } closureSideBinRightLocked { timeStamp value } closureSideBinRightClosed { timeStamp value } closureSideBinLeftNextAction { timeStamp value } closureSideBinRightNextAction { timeStamp value } closureTailgateLocked { timeStamp value } closureTailgateClosed { timeStamp value } closureTailgateNextAction { timeStamp value } closureTonneauLocked { timeStamp value } closureTonneauClosed { timeStamp value } wiperFluidState { timeStamp value } powerState { timeStamp value } batteryHvThermalEventPropagation { timeStamp value } twelveVoltBatteryHealth { timeStamp value } vehicleMileage { timeStamp value } brakeFluidLow { timeStamp value } gearStatus { timeStamp value } batteryLevel { timeStamp value } chargerState { timeStamp value } batteryLimit { timeStamp value } remoteChargingAvailable { timeStamp value } batteryHvThermalEvent { timeStamp value } rangeThreshold { timeStamp value } distanceToEmpty { timeStamp value } otaAvailableVersionGitHash { timeStamp value } otaAvailableVersion { timeStamp value } otaCurrentVersionGitHash { timeStamp value } otaCurrentVersion { timeStamp value } otaDownloadProgress { timeStamp value } otaInstallDuration { timeStamp value } otaInstallProgress { timeStamp value } otaInstallReady { timeStamp value } otaInstallTime { timeStamp value } otaInstallType { timeStamp value } otaStatus { timeStamp value } otaCurrentStatus { timeStamp value } cabinClimateInteriorTemperature { timeStamp value } cabinPreconditioningStatus { timeStamp value } cabinPreconditioningType { timeStamp value } petModeStatus { timeStamp value } petModeTemperatureStatus { timeStamp value } cabinClimateDriverTemperature { timeStamp value } gearGuardVideoStatus { timeStamp value } gearGuardVideoMode { timeStamp value } gearGuardVideoTermsAccepted { timeStamp value } defrostDefogStatus { timeStamp value } steeringWheelHeat { timeStamp value } seatFrontLeftHeat { timeStamp value } seatFrontRightHeat { timeStamp value } seatRearLeftHeat { timeStamp value } seatRearRightHeat { timeStamp value } chargerStatus { timeStamp value } seatFrontLeftVent { timeStamp value } seatFrontRightVent { timeStamp value } chargerDerateStatus { timeStamp value } driveMode { timeStamp value } serviceMode { timeStamp value } trailerStatus { timeStamp value } btmFfHardwareFailureStatus { timeStamp value } btmIcHardwareFailureStatus { timeStamp value } btmLfdHardwareFailureStatus { timeStamp value } btmRfHardwareFailureStatus { timeStamp value } btmRfdHardwareFailureStatus { timeStamp value } carWashMode { timeStamp value } chargePortState { timeStamp value } chargingTimeEstimationValidity { timeStamp value } limitedAccelCold { timeStamp value } limitedRegenCold { timeStamp value } rearHitchStatus { timeStamp value } }"
+  "query": "query GetVehicleState($vehicleID: String!) { vehicleState(id: $vehicleID) { __typename ...vehicleStateFields } }  fragment vehicleStateFields on VehicleState { gnssLocation { latitude longitude timeStamp isAuthorized } gnssSpeed { timeStamp value } gnssAltitude { timeStamp value } gnssError { timeStamp positionVertical positionHorizontal speed bearing } alarmSoundStatus { timeStamp value } timeToEndOfCharge { timeStamp value } doorFrontLeftLocked { timeStamp value } doorFrontLeftClosed { timeStamp value } doorFrontRightLocked { timeStamp value } doorFrontRightClosed { timeStamp value } doorRearLeftLocked { timeStamp value } doorRearLeftClosed { timeStamp value } doorRearRightLocked { timeStamp value } doorRearRightClosed { timeStamp value } windowFrontLeftClosed { timeStamp value } windowFrontRightClosed { timeStamp value } windowFrontLeftCalibrated { timeStamp value } windowFrontRightCalibrated { timeStamp value } windowRearLeftCalibrated { timeStamp value } windowRearRightCalibrated { timeStamp value } windowsNextAction { timeStamp value } closureFrunkLocked { timeStamp value } closureFrunkClosed { timeStamp value } closureFrunkNextAction { timeStamp value } gearGuardLocked { timeStamp value } closureLiftgateLocked { timeStamp value } closureLiftgateClosed { timeStamp value } closureLiftgateNextAction { timeStamp value } windowRearLeftClosed { timeStamp value } windowRearRightClosed { timeStamp value } closureSideBinLeftLocked { timeStamp value } closureSideBinLeftClosed { timeStamp value } closureSideBinRightLocked { timeStamp value } closureSideBinRightClosed { timeStamp value } closureSideBinLeftNextAction { timeStamp value } closureSideBinRightNextAction { timeStamp value } closureTailgateLocked { timeStamp value } closureTailgateClosed { timeStamp value } closureTailgateNextAction { timeStamp value } closureTonneauLocked { timeStamp value } closureTonneauClosed { timeStamp value } wiperFluidState { timeStamp value } powerState { timeStamp value } batteryHvThermalEventPropagation { timeStamp value } twelveVoltBatteryHealth { timeStamp value } vehicleMileage { timeStamp value } brakeFluidLow { timeStamp value } gearStatus { timeStamp value } batteryLevel { timeStamp value } chargerState { timeStamp value } batteryLimit { timeStamp value } remoteChargingAvailable { timeStamp value } batteryHvThermalEvent { timeStamp value } rangeThreshold { timeStamp value } distanceToEmpty { timeStamp value } otaAvailableVersionGitHash { timeStamp value } otaAvailableVersion { timeStamp value } otaCurrentVersionGitHash { timeStamp value } otaCurrentVersion { timeStamp value } otaDownloadProgress { timeStamp value } otaInstallDuration { timeStamp value } otaInstallProgress { timeStamp value } otaInstallReady { timeStamp value } otaInstallTime { timeStamp value } otaInstallType { timeStamp value } otaStatus { timeStamp value } otaCurrentStatus { timeStamp value } cabinClimateInteriorTemperature { timeStamp value } cabinPreconditioningStatus { timeStamp value } cabinPreconditioningType { timeStamp value } petModeStatus { timeStamp value } petModeTemperatureStatus { timeStamp value } cabinClimateDriverTemperature { timeStamp value } gearGuardVideoStatus { timeStamp value } gearGuardVideoMode { timeStamp value } gearGuardVideoTermsAccepted { timeStamp value } defrostDefogStatus { timeStamp value } steeringWheelHeat { timeStamp value } seatFrontLeftHeat { timeStamp value } seatFrontRightHeat { timeStamp value } seatRearLeftHeat { timeStamp value } seatRearRightHeat { timeStamp value } chargerStatus { timeStamp value } seatFrontLeftVent { timeStamp value } seatFrontRightVent { timeStamp value } chargerDerateStatus { timeStamp value } driveMode { timeStamp value } serviceMode { timeStamp value } trailerStatus { timeStamp value } btmFfHardwareFailureStatus { timeStamp value } btmIcHardwareFailureStatus { timeStamp value } btmLfdHardwareFailureStatus { timeStamp value } btmRfHardwareFailureStatus { timeStamp value } btmRfdHardwareFailureStatus { timeStamp value } carWashMode { timeStamp value } chargePortState { timeStamp value } chargingTimeEstimationValidity { timeStamp value } limitedAccelCold { timeStamp value } limitedRegenCold { timeStamp value } rearHitchStatus { timeStamp value } supportedFeatures { name status } }"
 }
 ```
 
@@ -439,7 +439,117 @@ csrf-token: <your CSRF token>
         "timeStamp": "2024-02-20T12:37:16.446Z",
         "value": 0
       },
-      "rearHitchStatus": null
+      "rearHitchStatus": null,
+      "supportedFeatures": [
+        {
+          "name": "ADDR_SHR",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "ADDR_SHR_TXT",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "ADDR_SHR_YLP",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "CAR_WASH_MODE",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "CHARG_CMD",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "CHARG_SCHED",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "CHARG_SLIDER",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "DEFROST_DEFOG",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "FRUNK_NXT_ACT",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "GEAR_GUARD_VIDEO_SETTING",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "HEATED_SEATS",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "HEATED_SEATS_EXT",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "HEATED_WHEEL",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "LIFTGATE_CMD",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "PET_MODE",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "PRECON_CMD_RESP",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "PRECON_SCRN_PROT",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "RENAME_VEHICLE",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "SCHED_DPRT",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "SET_TEMP_CMD",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "TRAILER_STATUS",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "TRIP_ADD_STOP",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "TRIP_PLANNER",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "TRIP_PLANNER_DRIVE_MODE",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "VENTED_SEATS",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "WIN_CALIB_STS",
+          "status": "AVAILABLE"
+        },
+        {
+          "name": "WIN_NXT_ACT",
+          "status": "AVAILABLE"
+        }
+      ]
     }
   }
 }
