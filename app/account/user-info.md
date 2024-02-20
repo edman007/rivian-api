@@ -1,16 +1,16 @@
 ---
-title: getUserInfo
+title: CurrentUser
 parent: Account Endpoints
 grand_parent: App API
 has_children: false
 nav_order: 3
 ---
 
-# getUserInfo
+# CurrentUser
 
 ## Overview
 
-The `getUserInfo` endpoint returns information about the user's account.
+The `CurrentUser` endpoint returns information about the user's account.
 
 `POST https://rivian.com/api/gql/gateway/graphql`
 
@@ -26,9 +26,9 @@ csrf-token: <your CSRF token>
 
 ```json
 {
-  "operationName": "getUserInfo",
+  "operationName": "CurrentUser",
   "variables": {},
-  "query": "query getUserInfo { currentUser { __typename id firstName lastName email address { __typename country } vehicles { __typename id name owner roles vin vas { __typename vasVehicleId vehiclePublicKey } vehicle { __typename model mobileConfiguration { __typename trimOption { __typename optionId optionName } exteriorColorOption { __typename optionId optionName } interiorColorOption { __typename optionId optionName } } vehicleState { __typename supportedFeatures { __typename name status } } otaEarlyAccessStatus } settings { __typename name { __typename value } } } enrolledPhones { __typename vas { __typename vasPhoneId publicKey } enrolled { __typename deviceType deviceName vehicleId identityId shortName } } pendingInvites { __typename id invitedByFirstName role status vehicleId vehicleModel email } } }"
+  "query": "query CurrentUser { currentUser { __typename ...CurrentUserFields } }  fragment CurrentUserFields on User { id settings { distanceUnit { value timestamp } temperatureUnit { value timestamp } } firstName lastName email address { country } vehicles { id owner roles vin vas { vasVehicleId vehiclePublicKey } vehicle { deviceSlots { phone { max free } } model mobileConfiguration { trimOption { optionId optionName } exteriorColorOption { optionId optionName } interiorColorOption { optionId optionName } driveSystemOption { optionId optionName } tonneauOption { optionId optionName } wheelOption { optionId optionName } driveSystemTowingDriveModes driveSystemDriveModes maxVehiclePower } maintenanceSchedule { sections { items { description isDue } serviceLifetime { __typename ... on MaintenanceDistanceLimit { km mi } ... on MaintenanceDateLimit { year } } } } } settings { name { value } } } enrolledPhones { vas { vasPhoneId publicKey } enrolled { deviceType deviceName vehicleId identityId shortName } } pendingInvites { id invitedByFirstName role status vehicleId vehicleModel email } }"
 }
 ```
 
@@ -40,68 +40,133 @@ csrf-token: <your CSRF token>
     "currentUser": {
       "__typename": "User",
       "id": <your-user-id>,
+      "settings": {
+        "distanceUnit": null,
+        "temperatureUnit": null
+      },
       "firstName": <your-first-name>,
       "lastName": <your-last-name>,
       "email": <your-email>,
-      "address": {
-        "__typename": "UserAddress",
-        "country": "US"
-      },
+      "address": null,
       "vehicles": [
         {
-          "__typename": "UserVehicle",
           "id": <your-vehicle-id>,
-          "name": null,
           "owner": null,
           "roles": [
-            "primary-owner"
+            "driver"
           ],
           "vin": <your-vin>,
           "vas": {
-            "__typename": "UserVehicleAccess",
-            "vasVehicleId": <your-vas-vehicle-id>,
-            "vehiclePublicKey": <your-vehicle-public-key>
+            "vasVehicleId": <your-vas-vehicleID>,
+            "vehiclePublicKey": <your-vas-public-key>
           },
           "vehicle": {
-            "__typename": "Vehicle",
-            "model": <vehicle-model>,
+            "deviceSlots": {
+              "phone": {
+                "max": 4,
+                "free": 3
+              }
+            },
+            "model": "R1S",
             "mobileConfiguration": {
-              ... options ...
+              "trimOption": {
+                "optionId": "PKG-ADV",
+                "optionName": "Adventure Package"
+              },
+              "exteriorColorOption": {
+                "optionId": "EXP-CYL",
+                "optionName": "Compass Yellow"
+              },
+              "interiorColorOption": {
+                "optionId": "INT-GYP",
+                "optionName": "Ocean Coast + Dark Ash Wood"
+              },
+              "driveSystemOption": {
+                "optionId": "MOT-401",
+                "optionName": "Quad-Motor AWD"
+              },
+              "tonneauOption": null,
+              "wheelOption": {
+                "optionId": "WHL-1RD",
+                "optionName": "21\" Road"
+              },
+              "driveSystemTowingDriveModes": [
+                "everyday",
+                "off_road_auto",
+                "winter"
+              ],
+              "driveSystemDriveModes": [
+                "everyday",
+                "off_road_auto",
+                "winter",
+                "sport",
+                "distance",
+                "off_road_rocks",
+                "off_road_sport_auto",
+                "off_road_sport_drift",
+                "off_road_sand"
+              ],
+              "maxVehiclePower": 215
             },
-            "vehicleState": {
-              "__typename": "VehicleState",
-              "supportedFeatures": [
-                ... vehicle's supported app features ...
+            "maintenanceSchedule": {
+              "sections": [
+                {
+                  "items": [
+                    {
+                      "description": "Tire rotation",
+                      "isDue": null
+                    },
+                    {
+                      "description": "Multi-point inspection",
+                      "isDue": null
+                    }
+                  ],
+                  "serviceLifetime": {
+                    "__typename": "MaintenanceDistanceLimit",
+                    "km": 12000,
+                    "mi": 7500
+                  }
+                },
+                {
+                  "items": [
+                    {
+                      "description": "Brake fluid flush",
+                      "isDue": false
+                    }
+                  ],
+                  "serviceLifetime": {
+                    "__typename": "MaintenanceDateLimit",
+                    "year": 3
+                  }
+                },
+                {
+                  "items": [
+                    {
+                      "description": "Coolant change",
+                      "isDue": null
+                    },
+                    {
+                      "description": "Drive unit fluid change (Quad-Motor AWD vehicles only)",
+                      "isDue": null
+                    }
+                  ],
+                  "serviceLifetime": {
+                    "__typename": "MaintenanceDistanceLimit",
+                    "km": 180000,
+                    "mi": 112500
+                  }
+                }
               ]
-            },
-            "otaEarlyAccessStatus": false
+            }
           },
           "settings": {
-            "__typename": "UserVehicleSettingsMap",
-            "name": null
+            "name": {
+              "value": "Banana"
+            }
           }
         }
       ],
-      "enrolledPhones": [
-        {
-          "__typename": "UserEnrolledPhone",
-          "vas": {
-            "__typename": "UserEnrolledPhoneAccess",
-            "vasPhoneId": <phone-key-id>,
-            "publicKey": <phone-public-key>
-          },
-          "enrolled": [
-            {
-              "__typename": "UserEnrolledPhoneEntry",
-              "deviceType": "phone/rivian",
-              "deviceName": <phone-name>,
-              "vehicleId": <your-vehicle-id>,
-              "identityId": <your-identity-id>,
-              "shortName": ""
-            }
-          ]
-        }
-      ],
+      "enrolledPhones": [],
       "pendingInvites": []
     }
   }
